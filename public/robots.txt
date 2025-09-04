@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ocean-studio.vercel.app/sitemap.xml
