@@ -1,407 +1,65 @@
 export default function Home() {
-  const stats = [
-    { label: "Fast loading", value: "99%" },
-    { label: "Mobile ready", value: "100%" },
-    { label: "Premium UI", value: "4K" },
-  ];
-
-  const features = [
-    "Modern glass design",
-    "Clean app landing page",
-    "Responsive mobile layout",
-    "Smooth premium cards",
+  const rooms = [
+    { name: "Public Lounge", users: 128 },
+    { name: "Creators Room", users: 42 },
+    { name: "Support Room", users: 16 },
   ];
 
   return (
     <main className="page">
       <nav className="nav">
-        <div className="brand">
-          <span className="logo">A</span>
-          <span>App Studio</span>
-        </div>
+        <div className="brand"><span className="logo">VC</span><span>VoiceChat</span></div>
         <div className="links">
-          <a href="#features">Features</a>
-          <a href="#preview">Preview</a>
-          <a className="navBtn" href="#contact">Start</a>
+          <a href="#rooms">Rooms</a>
+          <a href="/api/health">Health</a>
+          <a className="btn" href="/api">API</a>
         </div>
       </nav>
 
       <section className="hero">
-        <div className="heroText">
-          <p className="eyebrow">Premium design for your Vercel app</p>
-          <h1>Beautiful, modern and mobile-friendly app design.</h1>
-          <p className="subtitle">
-            Aapki app ab simple page ki jagah professional landing page jaisi lagegi — clean sections,
-            glass cards, bright gradient aur smooth responsive layout ke sath.
+        <div>
+          <p className="tag">Voice chat only setup</p>
+          <h1>Premium voice room app ready for launch.</h1>
+          <p className="text">
+            Camera preview, video room and stream UI removed. This page is now focused on voice rooms,
+            users, conversations and backend API testing.
           </p>
           <div className="actions">
-            <a className="primary" href="#preview">View design</a>
-            <a className="secondary" href="#features">See features</a>
-          </div>
-          <div className="stats">
-            {stats.map((item) => (
-              <div className="stat" key={item.label}>
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </div>
-            ))}
+            <a className="primary" href="#rooms">Open rooms</a>
+            <a className="secondary" href="/api/voice/rooms">Test voice API</a>
           </div>
         </div>
 
-        <div className="phone" id="preview">
-          <div className="phoneTop" />
-          <div className="screen">
-            <div className="card bigCard">
-              <span className="badge">Live Preview</span>
-              <h2>Premium Dashboard</h2>
-              <p>Clean UI, soft shadows and modern glass effect.</p>
+        <div className="panel" id="rooms">
+          <div className="panelTop"><h2>Rooms Online</h2><span>Voice Only</span></div>
+          <div className="wave"><i></i><i></i><i></i><i></i><i></i></div>
+          {rooms.map((room) => (
+            <div className="room" key={room.name}>
+              <b>{room.name}</b><small>{room.users} users online</small><strong>Open</strong>
             </div>
-            <div className="miniGrid">
-              <div className="miniCard">Design</div>
-              <div className="miniCard">Speed</div>
-              <div className="miniCard">Mobile</div>
-              <div className="miniCard">Vercel</div>
-            </div>
-          </div>
+          ))}
+          <div className="notice"><b>Video streaming disabled</b><small>Only voice chat modules are active.</small></div>
         </div>
       </section>
 
-      <section className="features" id="features">
-        {features.map((feature, index) => (
-          <article className="feature" key={feature}>
-            <span>0{index + 1}</span>
-            <h3>{feature}</h3>
-            <p>Professional look ke liye spacing, rounded cards, gradient aur readable typography add ki gayi.</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="cta" id="contact">
-        <h2>Ready for launch on Vercel</h2>
-        <p>GitHub me change push ho gaya to Vercel automatic deploy kar sakta hai.</p>
+      <section className="cards">
+        <div><b>No video live</b><p>Stream and camera preview removed from UI.</p></div>
+        <div><b>Voice backend</b><p>Health, rooms, users and conversations API added.</p></div>
+        <div><b>Vercel ready</b><p>Routes are ready for deployment testing.</p></div>
       </section>
 
       <style jsx>{`
-        * {
-          box-sizing: border-box;
-        }
-
-        .page {
-          min-height: 100vh;
-          color: #ffffff;
-          overflow: hidden;
-          background:
-            radial-gradient(circle at 10% 10%, rgba(98, 0, 255, 0.55), transparent 34%),
-            radial-gradient(circle at 90% 20%, rgba(255, 0, 132, 0.45), transparent 30%),
-            linear-gradient(135deg, #080816 0%, #111535 52%, #271047 100%);
-          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          padding: 28px;
-        }
-
-        .nav {
-          width: min(1180px, 100%);
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 16px 18px;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 24px;
-          background: rgba(255, 255, 255, 0.08);
-          backdrop-filter: blur(18px);
-          box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
-        }
-
-        .brand {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          font-weight: 800;
-          letter-spacing: 0.3px;
-        }
-
-        .logo {
-          width: 42px;
-          height: 42px;
-          display: grid;
-          place-items: center;
-          border-radius: 14px;
-          background: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
-          box-shadow: 0 10px 28px rgba(236, 72, 153, 0.35);
-        }
-
-        .links {
-          display: flex;
-          align-items: center;
-          gap: 18px;
-        }
-
-        .links a {
-          color: rgba(255, 255, 255, 0.82);
-          text-decoration: none;
-          font-weight: 600;
-        }
-
-        .navBtn,
-        .primary,
-        .secondary {
-          border-radius: 999px;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .navBtn {
-          padding: 10px 18px;
-          background: rgba(255, 255, 255, 0.16);
-        }
-
-        .hero {
-          width: min(1180px, 100%);
-          margin: 86px auto 0;
-          display: grid;
-          grid-template-columns: 1.08fr 0.92fr;
-          gap: 54px;
-          align-items: center;
-        }
-
-        .eyebrow {
-          display: inline-flex;
-          padding: 10px 16px;
-          border-radius: 999px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.14);
-          color: #f8d8ff;
-          font-weight: 700;
-          margin: 0 0 22px;
-        }
-
-        h1 {
-          font-size: clamp(42px, 7vw, 82px);
-          line-height: 0.95;
-          margin: 0;
-          letter-spacing: -4px;
-        }
-
-        .subtitle {
-          max-width: 650px;
-          color: rgba(255, 255, 255, 0.76);
-          font-size: 18px;
-          line-height: 1.8;
-          margin: 28px 0 0;
-        }
-
-        .actions {
-          display: flex;
-          gap: 14px;
-          flex-wrap: wrap;
-          margin-top: 34px;
-        }
-
-        .primary,
-        .secondary {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 15px 24px;
-          text-decoration: none;
-          font-weight: 800;
-        }
-
-        .primary {
-          color: #121225;
-          background: #ffffff;
-          box-shadow: 0 18px 40px rgba(255, 255, 255, 0.22);
-        }
-
-        .secondary {
-          color: #ffffff;
-          background: rgba(255, 255, 255, 0.12);
-          border: 1px solid rgba(255, 255, 255, 0.16);
-        }
-
-        .primary:hover,
-        .secondary:hover,
-        .navBtn:hover {
-          transform: translateY(-3px);
-        }
-
-        .stats {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 14px;
-          margin-top: 42px;
-          max-width: 650px;
-        }
-
-        .stat,
-        .feature,
-        .cta,
-        .card,
-        .miniCard {
-          border: 1px solid rgba(255, 255, 255, 0.14);
-          background: rgba(255, 255, 255, 0.09);
-          backdrop-filter: blur(18px);
-          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
-        }
-
-        .stat {
-          border-radius: 22px;
-          padding: 18px;
-        }
-
-        .stat strong {
-          display: block;
-          font-size: 28px;
-        }
-
-        .stat span {
-          display: block;
-          color: rgba(255, 255, 255, 0.65);
-          margin-top: 5px;
-          font-size: 14px;
-        }
-
-        .phone {
-          position: relative;
-          min-height: 610px;
-          border-radius: 48px;
-          padding: 18px;
-          background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.05));
-          border: 1px solid rgba(255, 255, 255, 0.18);
-          box-shadow: 0 34px 120px rgba(0, 0, 0, 0.42);
-          transform: rotate(2deg);
-        }
-
-        .phoneTop {
-          width: 110px;
-          height: 10px;
-          border-radius: 999px;
-          margin: 0 auto 18px;
-          background: rgba(255, 255, 255, 0.22);
-        }
-
-        .screen {
-          min-height: 546px;
-          border-radius: 36px;
-          padding: 24px;
-          background:
-            radial-gradient(circle at top right, rgba(236, 72, 153, 0.5), transparent 35%),
-            linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        .bigCard {
-          border-radius: 30px;
-          padding: 28px;
-        }
-
-        .badge {
-          display: inline-flex;
-          padding: 8px 12px;
-          border-radius: 999px;
-          color: #17172b;
-          background: #ffffff;
-          font-weight: 800;
-          font-size: 13px;
-        }
-
-        .bigCard h2 {
-          margin: 20px 0 10px;
-          font-size: 36px;
-          letter-spacing: -1px;
-        }
-
-        .bigCard p,
-        .feature p,
-        .cta p {
-          color: rgba(255, 255, 255, 0.68);
-          line-height: 1.7;
-        }
-
-        .miniGrid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
-        }
-
-        .miniCard {
-          min-height: 104px;
-          border-radius: 24px;
-          display: grid;
-          place-items: center;
-          font-weight: 800;
-        }
-
-        .features {
-          width: min(1180px, 100%);
-          margin: 90px auto 0;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 18px;
-        }
-
-        .feature {
-          border-radius: 28px;
-          padding: 24px;
-        }
-
-        .feature span {
-          color: #f0abfc;
-          font-weight: 900;
-        }
-
-        .feature h3 {
-          margin: 18px 0 12px;
-          font-size: 22px;
-        }
-
-        .cta {
-          width: min(1180px, 100%);
-          margin: 30px auto 20px;
-          border-radius: 32px;
-          padding: 34px;
-          text-align: center;
-        }
-
-        .cta h2 {
-          margin: 0;
-          font-size: clamp(30px, 4vw, 48px);
-          letter-spacing: -2px;
-        }
-
-        @media (max-width: 900px) {
-          .page {
-            padding: 18px;
-          }
-
-          .links a:not(.navBtn) {
-            display: none;
-          }
-
-          .hero {
-            margin-top: 48px;
-            grid-template-columns: 1fr;
-          }
-
-          h1 {
-            letter-spacing: -2px;
-          }
-
-          .stats,
-          .features {
-            grid-template-columns: 1fr;
-          }
-
-          .phone {
-            min-height: auto;
-            transform: none;
-          }
-
-          .screen {
-            min-height: 480px;
-          }
-        }
+        .page{min-height:100vh;color:#fff;background:radial-gradient(circle at 15% 10%,#ff4e8a55,transparent 35%),radial-gradient(circle at 85% 15%,#6d5dfc66,transparent 35%),linear-gradient(135deg,#090814,#16162f 55%,#2a1037);font-family:Inter,system-ui,Arial,sans-serif;padding:28px}
+        .nav{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px;border:1px solid #ffffff25;border-radius:24px;background:#ffffff14;backdrop-filter:blur(18px)}
+        .brand{display:flex;gap:12px;align-items:center;font-size:20px;font-weight:900}.logo{width:44px;height:44px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#ff477e,#7c3aed)}
+        .links{display:flex;gap:16px;align-items:center}.links a{color:#fff;text-decoration:none;font-weight:800}.btn{background:#ffffff22;padding:10px 16px;border-radius:999px}
+        .hero{max-width:1150px;margin:74px auto 0;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}.tag{display:inline-block;padding:10px 14px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff22;font-weight:900;color:#ffd9e8}
+        h1{font-size:clamp(42px,7vw,76px);line-height:.96;margin:20px 0;letter-spacing:-3px}.text{font-size:18px;line-height:1.8;color:#ffffffbf;max-width:650px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}.primary,.secondary{padding:15px 22px;border-radius:999px;text-decoration:none;font-weight:900}.primary{background:#fff;color:#151326}.secondary{color:#fff;background:#ffffff1f;border:1px solid #ffffff28}
+        .panel,.cards div{border:1px solid #ffffff24;background:#ffffff15;backdrop-filter:blur(18px);box-shadow:0 25px 80px #0006}.panel{border-radius:38px;padding:26px}.panelTop{display:flex;justify-content:space-between;align-items:center}.panelTop h2{font-size:36px;margin:0}.panelTop span{background:#fff;color:#17152a;border-radius:999px;padding:10px 14px;font-weight:900}
+        .wave{height:118px;border-radius:28px;background:#ffffff12;display:flex;gap:10px;align-items:center;justify-content:center;margin:24px 0}.wave i{display:block;width:12px;border-radius:999px;background:linear-gradient(#fff,#ff72b2)}.wave i:nth-child(1){height:40px}.wave i:nth-child(2){height:78px}.wave i:nth-child(3){height:55px}.wave i:nth-child(4){height:90px}.wave i:nth-child(5){height:48px}
+        .room{display:grid;grid-template-columns:1fr auto;gap:4px;padding:16px;margin-top:12px;border-radius:22px;background:#ffffff16;border:1px solid #ffffff1f}.room small{color:#ffffffa8}.room strong{grid-row:1/3;grid-column:2;color:#c4b5fd;align-self:center}.notice{margin-top:14px;padding:16px;border-radius:22px;background:#ff477e22;border:1px solid #ff8ab544}.notice b,.notice small{display:block}.notice small{color:#ffffffa8;margin-top:5px}
+        .cards{max-width:1150px;margin:70px auto 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.cards div{border-radius:26px;padding:24px}.cards b{font-size:22px}.cards p{color:#ffffffa8;line-height:1.6}
+        @media(max-width:900px){.page{padding:18px}.hero{grid-template-columns:1fr;margin-top:44px}h1{letter-spacing:-2px}.cards{grid-template-columns:1fr}.links a:not(.btn){display:none}.panelTop{align-items:flex-start;flex-direction:column;gap:12px}}
       `}</style>
     </main>
   );
